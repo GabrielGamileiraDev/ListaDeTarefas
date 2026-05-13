@@ -48,10 +48,10 @@ Antes de começar, você vai precisar ter instalado na sua máquina:
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/tasklist-app.git
+git clone https://github.com/GabrielGamileiraDev/ListaDeTarefas
 
 # Entre na pasta do projeto
-cd tasklist-app
+cd ListaDeTarefas
 
 # Instale as dependências
 npm install
@@ -95,9 +95,6 @@ Após isso, você pode:
 
 
 
-## 📄 Licença
-
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
 
 <br/>
 
