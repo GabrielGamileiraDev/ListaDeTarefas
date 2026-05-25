@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Item from '../components/itemTarefa'
+import { useFonts } from '@expo-google-fonts/inter/useFonts';
 
 export default function Tela2() {
   const [textoTarefa, setTextoTarefa] = useState('');
@@ -22,9 +23,10 @@ export default function Tela2() {
           style={styles.input}
           value={textoTarefa}
           onChangeText={setTextoTarefa}
+          placeholder='     Digite uma nova tarefa aqui'
           />
           <TouchableOpacity onPress={additemLista}>
-            <Text style={styles.addItem}>Adicionar item</Text>
+            <Text style={styles.addItem}>Adicionar tarefa</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -38,22 +40,28 @@ export default function Tela2() {
   );
 }
 
+
 const styles = StyleSheet.create({
   input:{
-    backgroundColor: "#b6b6b6",
+    backgroundColor: "#ffffff",
     borderRadius:10,
-    marginHorizontal:10
+    borderWidth: 2,
+    borderColor: '#929292c9',
+    marginHorizontal:10,
+    fontFamily: 'System',
+    color: '#a3a3a3'
   },
+
   textoTopo:{
     fontSize:25,
     fontWeight: 'bold',
-    color: "#303030",
+    color: "#000000",
     marginHorizontal: 10
   },
 
   title: {
     fontSize: 22,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
 
   },
 
@@ -61,7 +69,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     borderColor: '#000000',
-    backgroundColor: '#59e48e',
+    backgroundColor: '#8CC153',
     top: 10,
     padding: 10,
     paddingLeft: 15,
