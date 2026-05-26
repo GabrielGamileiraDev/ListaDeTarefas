@@ -1,81 +1,158 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import Item from '../components/itemTarefa'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Item from '../components/itemTarefa';
+import { CircleAlert } from 'lucide-react-native';
+
 
 export default function Tela2() {
   const [textoTarefa, setTextoTarefa] = useState('');
   const [lista, setLista] = useState<string[]>([]);
-  const additemLista = () =>{
-    if(textoTarefa.trim() === '') return;
+  const [mensagem, setMensagem] = useState('');
+
+  const additemLista = () => {
+    if (textoTarefa.trim() === '') return;
 
     setLista((prev) => [...prev, textoTarefa]);
-    setTextoTarefa('')
-  }
+    setTextoTarefa('');
+  };
 
+  const removerItem = (index: number) => {
+    setLista((prev) => prev.filter((_, i) => i !== index));
+    setMensagem('O item foi removido da lista');
+  };
 
   return (
-    <View>
+    <View style={styles.contentContainer}>
       <View>
-        <View>
-          <Text style={styles.textoTopo}>Adicionar nova tarefa</Text>
-          <TextInput 
-          style={styles.input}
-          value={textoTarefa}
-          onChangeText={setTextoTarefa}
+        <Text style={styles.textoTopo}>
+          Lista de tarefas pendentes
+        </Text>
+
+        <View style={styles.inputsContainer}>
+          <TextInput
+            style={styles.input}
+            value={textoTarefa}
+            onChangeText={setTextoTarefa}
+            placeholder="Digite uma nova tarefa aqui"
           />
+
           <TouchableOpacity onPress={additemLista}>
-            <Text style={styles.addItem}>Adicionar item</Text>
+            <Text style={styles.addItem}>
+              Adicionar tarefa
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
-      <View>
-        {lista.map((item, index) =>(
-          <Item key={index} listaDeTarefas={item}/> 
-          ))}
 
+      <View style={styles.listaContainer}>
+        {lista.length === 0 ? (
+          <Text style={styles.listaVazia}>
+            Nenhuma tarefa adicionada :(
+          </Text>
+        ) : (
+          lista.map((item, index) => (
+            <Item
+              key={index}
+              listaDeTarefas={item}
+              onRemove={() => removerItem(index)}
+            />
+          ))
+        )}
       </View>
+      
+      {mensagem !== '' && (
+        <View style={styles.alertaContainer}>
+          <CircleAlert color='#fff'/> 
+          <Text style={styles.alertaTexto}>
+            {mensagem}
+          </Text>
+
+          <TouchableOpacity onPress={() => setMensagem('')}>
+            <Text style={styles.fecharMensagem}>✕</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  input:{
-    backgroundColor: "#b6b6b6",
-    borderRadius:10,
-    marginHorizontal:10
-  },
-  textoTopo:{
-    fontSize:25,
-    fontWeight: 'bold',
-    color: "#303030",
-    marginHorizontal: 10
+  contentContainer: {
+    flex: 1,
+    top: 40
   },
 
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold'
-
+  inputsContainer: {
+    alignItems: 'center',
+    top: 10
   },
 
-  addItem:{
-    borderRadius: 10,
+  input: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
     borderWidth: 2,
-    borderColor: '#000000',
-    backgroundColor: '#59e48e',
+    borderColor: '#929292c9',
+    color: '#000',
+    width: '90%',
+    paddingHorizontal: 15,
+    paddingVertical: 15
+  },
+
+  textoTopo: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#000',
+    marginHorizontal: 10,
+    textAlign: 'center',
+    bottom: 10
+  },
+
+  addItem: {
+    borderRadius: 12,
+    borderWidth: 2,
+    backgroundColor: '#8CC153',
     top: 10,
     padding: 10,
-    paddingLeft: 15,
-    left: 16,
+    paddingHorizontal: 80,
+    fontWeight: 'bold',
+    color: '#fff'
+  },
+
+  listaContainer: {
+    marginTop: 40
+  },
+
+  listaVazia: {
+    textAlign: 'center',
+    color: '#7a7a7a',
+    fontSize: 16,
+    marginTop: 20
+  },
+
+  alertaContainer: {
+    marginTop: 'auto',
+    marginHorizontal: 15,
+    marginBottom: 50,
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 12,
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: 'row',
-    display: 'flex',   
-    marginRight: 230,
-    fontWeight: 'bold',
+    backgroundColor: '#e04040',
+    borderColor: '#fff',
+  },
+
+  alertaTexto: {
     color: '#fff',
-   
+    fontWeight: 'bold',
+    
+
+  },
+
+  fecharMensagem: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff'
   }
-
-
-
-})
+});
