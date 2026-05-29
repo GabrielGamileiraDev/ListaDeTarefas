@@ -9,10 +9,16 @@ export default function Tela2() {
   const [textoTarefa, setTextoTarefa] = useState('');
   const [lista, setLista] = useState<string[]>([]);
   const [mensagem, setMensagem] = useState('');
+  const [vazia, setVazia] = useState(false);
 
 
   const additemLista = () => {
-    if (textoTarefa.trim() === '') return;
+    if (textoTarefa.trim() === ''){
+      setVazia(true);
+      return;
+    };
+
+    setVazia(false)
 
     setLista((prev) => [...prev, textoTarefa]);
 
@@ -38,7 +44,10 @@ export default function Tela2() {
           <TextInput
             style={styles.input}
             value={textoTarefa}
-            onChangeText={setTextoTarefa}
+            onChangeText={(textoTarefa) => {
+              setTextoTarefa(textoTarefa);
+              setVazia(false)
+            }}
             placeholder="Digite uma nova tarefa aqui"
           />
 
@@ -47,6 +56,11 @@ export default function Tela2() {
               Adicionar tarefa
             </Text>
           </TouchableOpacity>
+          {vazia &&(
+            <Text style={styles.vazio}>
+              Não é possível adicionar uma task vazia. :/
+            </Text>
+          ) }
         </View>
       </View>
       <View style={styles.numTask}>
@@ -127,6 +141,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 80,
     fontWeight: 'bold',
     color: '#fff'
+  },
+
+  vazio:{
+    color: '#ff0000',
+    fontWeight: 'bold',
+    top: 20,
+    textAlign: 'center'
   },
 
   numTask:{
