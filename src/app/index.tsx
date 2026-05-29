@@ -1,5 +1,5 @@
 import { Link } from 'expo-router';
-import { KeyRound, Mail } from 'lucide-react-native';
+import { KeyRound, Mail } from 'lucidegit-react-native';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function app() {
