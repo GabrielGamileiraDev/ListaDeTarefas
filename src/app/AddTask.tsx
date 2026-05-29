@@ -5,19 +5,25 @@ import { CircleAlert } from 'lucide-react-native';
 
 
 export default function Tela2() {
+  const [numTarefas, setNumTarefas] = useState(0);
   const [textoTarefa, setTextoTarefa] = useState('');
   const [lista, setLista] = useState<string[]>([]);
   const [mensagem, setMensagem] = useState('');
+
 
   const additemLista = () => {
     if (textoTarefa.trim() === '') return;
 
     setLista((prev) => [...prev, textoTarefa]);
+
+    setNumTarefas(prev => prev + 1);
+
     setTextoTarefa('');
   };
 
   const removerItem = (index: number) => {
     setLista((prev) => prev.filter((_, i) => i !== index));
+    setNumTarefas(prev => prev - 1);
     setMensagem('O item foi removido da lista');
   };
 
@@ -43,7 +49,9 @@ export default function Tela2() {
           </TouchableOpacity>
         </View>
       </View>
-
+      <View style={styles.numTask}>
+        <Text>Número de tarefas: {numTarefas}</Text>
+      </View>
       <View style={styles.listaContainer}>
         {lista.length === 0 ? (
           <Text style={styles.listaVazia}>
@@ -67,9 +75,12 @@ export default function Tela2() {
             {mensagem}
           </Text>
 
-          <TouchableOpacity onPress={() => setMensagem('')}>
-            <Text style={styles.fecharMensagem}>✕</Text>
-          </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => setMensagem('')}>
+              <Text style={styles.fecharMensagem}>✕</Text>
+            </TouchableOpacity>
+  
+ 
         </View>
       )}
     </View>
@@ -118,6 +129,11 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
 
+  numTask:{
+    top: 30,
+    left: 25
+    
+  },
   listaContainer: {
     marginTop: 40
   },

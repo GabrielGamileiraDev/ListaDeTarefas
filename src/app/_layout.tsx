@@ -12,7 +12,7 @@ export default function RootLayout() {
       }}
 
       />
-      <Tabs.Screen name='tela2' 
+      <Tabs.Screen name='AddTask' 
       options={{
         tabBarIcon: ({size}) => <House size={25}/>
       }}

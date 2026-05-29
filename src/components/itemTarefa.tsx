@@ -1,7 +1,7 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Tags from './tags';
 import { Circle } from 'lucide-react-native';
-
+import { useState } from 'react';
 type listaDeItens = {
   listaDeTarefas: string;
   onRemove: () => void;
@@ -10,12 +10,20 @@ type listaDeItens = {
 export default function Item({
   listaDeTarefas,
   onRemove
-}: listaDeItens) {
+}: listaDeItens) 
+{
+  const [check, setCheck] = useState(false)
   return (
     <View style={styles.container}>
-      <Circle size={16} color="#acacac" />
+      <TouchableOpacity onPress={() => 
+        setCheck((!check))
+      } style={styles.checkbox}>
 
-      <Text style={styles.title}>
+      
+      <Circle size={16} color="#acacac">{check && <View style={styles.checked} />} </Circle>
+      </TouchableOpacity>
+
+      <Text style={[styles.title, check && styles.textChecked]} >
         {listaDeTarefas}
       </Text>
 
@@ -44,5 +52,21 @@ const styles = StyleSheet.create({
     fontWeight: 'semibold',
     right: 110,
     color: '#747272'
-  }
-});
+  },
+
+  textChecked: {
+    textDecorationLine: 'line-through',
+    opacity: 0.5
+  },
+  checkbox: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  checked: {
+    width: 16,
+    height: 16,
+    borderRadius: 10,
+    backgroundColor: '#5351c7'
+  },
+})

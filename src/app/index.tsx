@@ -1,5 +1,6 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { Link } from 'expo-router';
 import React from 'react';
 import {
   SafeAreaView,
@@ -38,10 +39,12 @@ export default function LoginScreen() {
       <TouchableOpacity>
         <Text style={styles.forgotText}>Esqueceu a senha?</Text>
       </TouchableOpacity>
-      
-      <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginText}>login</Text>
-      </TouchableOpacity>
+      <Link href={'/AddTask'} asChild>      
+        <TouchableOpacity style={styles.loginButton}>
+          <Text style={styles.loginText}>Login</Text>
+        </TouchableOpacity>
+      </Link>
+
     
       <View style={styles.dividerContainer}>
         <View style={styles.line} />
@@ -64,8 +67,8 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F8F8',
     paddingHorizontal: 25,
+    top: 50
   },
   logoContainer: {
     alignItems: 'center',
