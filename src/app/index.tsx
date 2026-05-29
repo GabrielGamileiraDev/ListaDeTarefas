@@ -1,105 +1,159 @@
-import { Link } from 'expo-router';
-import { KeyRound, Mail } from 'lucide-react-native';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
-export default function app() {
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import React from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+export default function LoginScreen() {
   return (
-    <View style={styles.containerBody}>
-      <View style={styles.containerLogo}>
-        <Image
-          source={require('../../assets/images/logo.png')}
-        />
-        <Text style={styles.textBemVindo}>Bem vindo de Volta!</Text>
-      </View>
-      <View style={styles.viewForm}>
-        <View>
-            <Text style={styles.textForm}>Email</Text>
-            <View style={styles.iconBlock}>
-              <TextInput
-                style={styles.input}
-                placeholder=''
-              />
-              <Mail style={styles.icone} />
-            </View>
-        </View>
-        <View>
-          <View>
-            <Text style={styles.textForm}>Senha</Text>
-            <View style={styles.iconBlock}>
-              <TextInput
-                style={styles.input}
-                placeholder=''
-                secureTextEntry={true}
-                textContentType='password'
-              />
-              <KeyRound style={styles.icone} />
-            </View>
-          </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.logoContainer}>
+        <View style={styles.logoBox}>
+        <MaterialIcons name="check" size={50} color="#fff" />
         </View>
       </View>
-      <View style={styles.viewBtn}>
-        <View>
-          <TouchableOpacity style={styles.btnEnviar}>
-            <Link href="/tela2" asChild>
-            <Text style={styles.textEntrar}>Entrar</Text>
-            </Link>
-          </TouchableOpacity>
-        </View>
+      <Text style={styles.title}>Entre com sua conta</Text>
+
+      <Text style={styles.subtitle}>
+        Seja bem vindo ao app para organizar{'\n'}
+        suas tarefas diarias.
+      </Text>
+
+      <TextInput
+        placeholder="Endereço Email"
+        placeholderTextColor="#888"
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Senha"
+        placeholderTextColor="#888"
+        secureTextEntry
+        style={styles.input}
+      />
+      <TouchableOpacity>
+        <Text style={styles.forgotText}>Esqueceu a senha?</Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity style={styles.loginButton}>
+        <Text style={styles.loginText}>login</Text>
+      </TouchableOpacity>
+    
+      <View style={styles.dividerContainer}>
+        <View style={styles.line} />
+        <Text style={styles.dividerText}>Ou entre como</Text>
+        <View style={styles.line} />
       </View>
-    </View>
+
+      <TouchableOpacity style={styles.googleButton}>
+       <AntDesign name="google" size={24} color="#DB4437" />
+        <Text style={styles.googleText}>Google</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.registerText}>
+        Sem registro? <Text style={styles.registerBold}>Crie uma conta</Text>
+      </Text>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  containerBody: {
+  container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: '#F8F8F8',
+    paddingHorizontal: 25,
   },
-  containerLogo: {
-    flex: 1,
+  logoContainer: {
     alignItems: 'center',
-    justifyContent: 'center'
+    marginTop: 40,
+  },
+  logoBox: {
+    width: 80,
+    height: 80,
+    borderRadius: 18,
+    backgroundColor: '#8B6EF6',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#000',
+    marginTop: 25,
+  },
+  subtitle: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#777',
+    marginTop: 15,
+    lineHeight: 24,
+    marginBottom: 35,
   },
   input: {
-    backgroundColor: '#d7d8d7',
-    borderRadius: 20
+    height: 58,
+    borderWidth: 1,
+    borderColor: '#CFCFCF',
+    borderRadius: 14,
+    paddingHorizontal: 18,
+    fontSize: 16,
+    backgroundColor: '#fff',
+    marginBottom: 15,
   },
-  textBemVindo: {
-    fontSize: 30,
-    fontWeight: 'bold',
-     paddingTop: 20
+  forgotText: {
+    alignSelf: 'flex-end',
+    color: '#5B7CFA',
+    fontSize: 14,
+    marginBottom: 30,
   },
-  viewForm: {
-    flex: 1,
-    paddingHorizontal: 15
-  },
-  textForm: {
-    fontSize: 19,
-    color: '#d7d8d7'
-  },
-  icone: {
-    position: 'absolute',
-    right: 15,
-    color: '#708070'
-  },
-  iconBlock:{
-    justifyContent: 'center'
-  },
-  textEntrar:{
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#fff'
-  },
-  btnEnviar:{
-    backgroundColor: '#878af6',
-    paddingVertical: 10,
-    paddingHorizontal: 70,
-    borderRadius: 35
-},
-  viewBtn:{
-    flex: 1, 
-    marginTop: -250,
+  loginButton: {
+    height: 58,
+    backgroundColor: '#8B6EF6',
+    borderRadius: 14,
     justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+    alignItems: 'center',
+  },
+  loginText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  dividerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 35,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#DADADA',
+  },
+  dividerText: {
+    marginHorizontal: 10,
+    color: '#777',
+  },
+  googleButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  googleText: {
+    marginLeft: 10,
+    fontSize: 18,
+    color: '#000',
+  },
+  registerText: {
+    textAlign: 'center',
+    marginTop: 35,
+    color: '#666',
+    fontSize: 15,
+  },
+  registerBold: {
+    fontWeight: '700',
+    color: '#000',
+  },
+});
