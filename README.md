@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div align="center">
 
 
@@ -110,10 +110,6 @@ Feito por **(https://github.com/GabrielGamileiraDev)** com auxilio do professor 
 <br/>
 
 </div>
-=======
-# Lista-de-Tarefas-Desenv.-Mobile
-Repositório com o intuito de aprendizado  utilizando certas techs: ReactNative e Expo.
 
 
-Branch para Listagem de Compras
->>>>>>> f9577a8b6877fab4917515303f71fccb4de15e21
+
