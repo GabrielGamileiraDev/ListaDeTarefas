@@ -110,6 +110,3 @@ Feito por **(https://github.com/GabrielGamileiraDev)** com auxilio do professor 
 <br/>
 
 </div>
-
-
-
