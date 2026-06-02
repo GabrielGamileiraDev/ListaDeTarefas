@@ -42,7 +42,7 @@ export default function NovaTarefa() {
           />
           </BaseInputDate>
         </View>
-        <Tags />
+        
       </View>
       <View style={styles.viewCriar}>
         <TouchableOpacity>

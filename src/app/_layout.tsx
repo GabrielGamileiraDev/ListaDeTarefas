@@ -12,19 +12,26 @@ export default function RootLayout() {
       }}
 
       />
-      <Tabs.Screen name='tela2' 
+      <Tabs.Screen name='AddTask' 
       options={{
-        tabBarIcon: ({size}) => <House size={25}/>
+        headerShown: false,
+        tabBarStyle: {display : 'none'},
+        href: null
       }}
+
       />
       <Tabs.Screen name='novaTarefa' 
       options={{
-        tabBarIcon: ({size}) => <PencilLine size={25}/>
+        headerShown: false,
+        tabBarStyle: {display : 'none'},
+        href: null
       }}
       />
       <Tabs.Screen name='teste' 
       options={{
-        tabBarIcon: (size) => <User size={25}/>
+        headerShown: false,
+        tabBarStyle: {display : 'none'},
+        href: null
       }}
       />
 
