@@ -1,2 +1,5 @@
 # Lista-de-Tarefas-Desenv.-Mobile
-Repositório com o intuito de aprendizado  utilizando certas techs: ReactNative e Expo 
+Repositório com o intuito de aprendizado  utilizando certas techs: ReactNative e Expo.
+
+
+Branch para Listagem de Compras
