@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div align="center">
 
@@ -113,3 +114,9 @@ Feito por **(https://github.com/GabrielGamileiraDev)** com auxilio do professor 
 
 
 
+=======
+
+# Lista-de-Tarefas-Desenv.-Mobile
+Repositório com o intuito de aprendizado  utilizando certas techs: ReactNative e Expo.
+
+>>>>>>> 402aa387a22ce9bf339f8c6799b3c3de5dd155ca
